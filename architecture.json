@@ -1,0 +1,170 @@
+{
+  "type": "Container",
+  "scope": "TvShow Enricher",
+  "description": "",
+  "size": "A3_Landscape",
+  "elements": [
+    {
+      "type": "Person",
+      "name": "Internal user",
+      "description": "Organization user which queries the API",
+      "tags": "",
+      "position": "1130,879"
+    },
+    {
+      "type": "Software System",
+      "name": "TVMaze API",
+      "description": "TVMaze API that contains show information",
+      "tags": "",
+      "position": "2170,985"
+    },
+    {
+      "type": "Software System",
+      "name": "TvShow Enricher",
+      "description": "System that provides the cast of all the tv shows in the TVMaze database, so we can enrich our metadata system with this information.",
+      "tags": "External",
+      "containers": [
+        {
+          "type": "Container",
+          "name": "Show Database",
+          "description": "Database containing the scraped data for shows",
+          "technology": "CosmosDB",
+          "tags": "Database",
+          "position": "1595,2310"
+        },
+        {
+          "type": "Container",
+          "name": "ShowCast API",
+          "description": "Rest API that exposes the cast for a given show",
+          "technology": ".net Core 2.1, WebApi, Rest, Azure Function",
+          "tags": "API",
+          "position": "1105,1729"
+        },
+        {
+          "type": "Container",
+          "name": "TvMaze Scraper",
+          "description": "Scheduled job which constantly queries TvMaze for show information",
+          "technology": ".net Core 2.1, Azure Function",
+          "tags": "",
+          "position": "2155,1729"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Internal user",
+      "description": "Queries for TV show cast information",
+      "technology": "",
+      "destination": "TvShow Enricher",
+      "tags": ""
+    },
+    {
+      "source": "Internal user",
+      "description": "Query cast information for scraped shows",
+      "technology": "",
+      "destination": "ShowCast API",
+      "tags": ""
+    },
+    {
+      "source": "ShowCast API",
+      "description": "Gets cast information for scraped shows",
+      "technology": "",
+      "destination": "Show Database",
+      "tags": ""
+    },
+    {
+      "source": "TvMaze Scraper",
+      "description": "Scrapes for information of show cast",
+      "technology": "Https, REST",
+      "destination": "TVMaze API",
+      "tags": ""
+    },
+    {
+      "source": "TvMaze Scraper",
+      "description": "Stores cast information for scraped shows",
+      "technology": "",
+      "destination": "Show Database",
+      "tags": ""
+    },
+    {
+      "source": "TvShow Enricher",
+      "description": "Scrapes for information of show cast",
+      "technology": "",
+      "destination": "TVMaze API",
+      "tags": ""
+    }
+  ],
+  "styles": [
+    {
+      "type": "element",
+      "description": "",
+      "tag": "Container",
+      "width": "",
+      "height": "",
+      "background": "#0000ff",
+      "color": "",
+      "fontSize": "",
+      "border": "",
+      "opacity": "",
+      "shape": "",
+      "metadata": ""
+    },
+    {
+      "type": "element",
+      "description": "",
+      "tag": "Database",
+      "width": "",
+      "height": "",
+      "background": "",
+      "color": "",
+      "fontSize": "",
+      "border": "",
+      "opacity": "",
+      "shape": "Cylinder",
+      "metadata": ""
+    },
+    {
+      "type": "element",
+      "description": "",
+      "tag": "External",
+      "width": "",
+      "height": "",
+      "background": "",
+      "color": "",
+      "fontSize": "",
+      "border": "",
+      "opacity": "",
+      "shape": "",
+      "metadata": ""
+    },
+    {
+      "type": "element",
+      "description": "",
+      "tag": "Person",
+      "width": "",
+      "height": "",
+      "background": "",
+      "color": "",
+      "fontSize": "",
+      "border": "",
+      "opacity": "",
+      "shape": "Person",
+      "metadata": ""
+    },
+    {
+      "type": "element",
+      "description": "",
+      "tag": "Software System",
+      "width": "",
+      "height": "",
+      "background": "#c0c0c0",
+      "color": "",
+      "fontSize": "",
+      "border": "",
+      "opacity": "",
+      "shape": "",
+      "metadata": ""
+    }
+  ]
+}
