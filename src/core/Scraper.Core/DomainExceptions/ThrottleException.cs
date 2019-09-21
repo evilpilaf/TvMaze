@@ -6,7 +6,7 @@ namespace Scraper.Core.DomainExceptions
     {
     }
 
-    public class CastNotFoundException : Exception
+    public class NotFoundException : Exception
     {
     }
 

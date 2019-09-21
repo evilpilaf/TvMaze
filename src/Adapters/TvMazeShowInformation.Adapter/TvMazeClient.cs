@@ -85,7 +85,7 @@ namespace TvMazeShowInformation.Adapter
             switch (response.StatusCode)
             {
                 case HttpStatusCode.NotFound:
-                    return new CastNotFoundException();
+                    return new NotFoundException();
                 case (HttpStatusCode)429:
                     return new ThrottleException();
                 default:
