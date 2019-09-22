@@ -7,10 +7,6 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 
-using Newtonsoft.Json;
-
-using NodaTime;
-
 using Scraper.Core.DomainExceptions;
 using Scraper.Core.Entities;
 using Scraper.Core.UseCases;
@@ -53,12 +49,8 @@ namespace ShowCastApi
 
             var result = await _getPageOfShowsUseCase.Execute(pageSize, pageNumber);
 
-            var jsonSettings = new JsonSerializerSettings();
-            jsonSettings.ConfigureForNodaTime(DateTimeZoneProviders.Tzdb);
-            var b = new JsonSerializer();
-
             var actionResult = result.Match<PageResult<Show>, ActionResult>(
-                succ: page => new JsonResult(page.Results, jsonSettings), 
+                succ: page => new OkObjectResult(page.Results), 
                 fail: ex =>
                 {
                     switch (ex)

@@ -4,8 +4,6 @@ using System.Linq;
 
 using Newtonsoft.Json;
 
-using NodaTime.Extensions;
-
 using Scraper.Core.Entities;
 
 namespace ShowStorage.Adapter.Dtos
@@ -41,18 +39,18 @@ namespace ShowStorage.Adapter.Dtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime? BirthDate { get; set; }
+        public DateTimeOffset? BirthDate { get; set; }
 
         public CastCosmosDto(CastMember e)
         {
             Id = e.Id;
             Name = e.Name;
-            BirthDate = e.BirthDate?.ToDateTimeUnspecified();
+            BirthDate = e.BirthDate;
         }
 
         public CastMember ToEntity()
         {
-            return new CastMember(Id, Name, BirthDate?.ToLocalDateTime().Date);
+            return new CastMember(Id, Name, BirthDate?.Date);
         }
     }
 }

@@ -2,7 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using NodaTime;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 using Scraper.Core.UseCases;
 
@@ -27,6 +28,13 @@ namespace ShowCastApi
                 .Build();
 
             _settings = config.Get<FunctionSettings>();
+
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                DateFormatString = "yyyy-MM-dd",
+                DateFormatHandling = DateFormatHandling.IsoDateFormat
+            };
 
             Log.Logger = new LoggerConfiguration()
                                 .MinimumLevel.Debug()

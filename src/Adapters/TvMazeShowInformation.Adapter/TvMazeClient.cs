@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-using NodaTime.Extensions;
-
 using Scraper.Core.Adapters;
 using Scraper.Core.DomainExceptions;
 using Scraper.Core.Entities;
 using Scraper.Core.ValueTypes;
+
 using Exception = System.Exception;
 
 namespace TvMazeShowInformation.Adapter
@@ -74,7 +73,7 @@ namespace TvMazeShowInformation.Adapter
                     (
                         id: p["id"].Value<int>(),
                         name: p["name"].Value<string>(),
-                        birthDate: p["birthday"].Value<DateTime?>()?.ToLocalDateTime().Date
+                        birthDate: p["birthday"].Value<DateTimeOffset?>()?.Date
                     ));
                     return new Result<IEnumerable<CastMember>>(persons);
                 }
