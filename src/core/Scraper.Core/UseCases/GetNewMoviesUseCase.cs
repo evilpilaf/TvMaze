@@ -23,7 +23,7 @@ namespace Scraper.Core.UseCases
 
         public async Task<Result<Unit>> Execute()
         {
-            const int batchSize = 1;
+            const int batchSize = 100;
 
             int latestMovieId = await _showStore.GetLatestScrapedShowId();
 
