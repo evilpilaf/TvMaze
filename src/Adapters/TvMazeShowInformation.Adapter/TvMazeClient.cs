@@ -74,7 +74,7 @@ namespace TvMazeShowInformation.Adapter
                     (
                         id: p["id"].Value<int>(),
                         name: p["name"].Value<string>(),
-                        birthDate: p["birthday"].Value<DateTime>().ToLocalDateTime().Date
+                        birthDate: p["birthday"].Value<DateTime?>()?.ToLocalDateTime().Date
                     ));
                     return new Result<IEnumerable<CastMember>>(persons);
                 }

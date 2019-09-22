@@ -6,9 +6,9 @@ namespace Scraper.Core.Entities
     {
         public int Id { get; }
         public string Name { get; }
-        public LocalDate BirthDate { get; }
+        public LocalDate? BirthDate { get; }
 
-        public CastMember(int id, string name, LocalDate birthDate)
+        public CastMember(int id, string name, LocalDate? birthDate)
         {
             Id = id;
             Name = name;

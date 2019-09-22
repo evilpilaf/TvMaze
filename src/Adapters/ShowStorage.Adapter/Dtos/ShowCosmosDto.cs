@@ -41,18 +41,18 @@ namespace ShowStorage.Adapter.Dtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         public CastCosmosDto(CastMember e)
         {
             Id = e.Id;
             Name = e.Name;
-            BirthDate = e.BirthDate.ToDateTimeUnspecified();
+            BirthDate = e.BirthDate?.ToDateTimeUnspecified();
         }
 
         public CastMember ToEntity()
         {
-            return new CastMember(Id, Name, BirthDate.ToLocalDateTime().Date);
+            return new CastMember(Id, Name, BirthDate?.ToLocalDateTime().Date);
         }
     }
 }
