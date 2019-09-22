@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Scraper.Core.Entities
 {
@@ -15,7 +16,7 @@ namespace Scraper.Core.Entities
             Id = id;
             Name = name;
             TvMazeId = tvMazeId;
-            Cast = new List<CastMember>(cast);
+            Cast = cast.OrderBy(c => c.BirthDate).ToList();
         }
     }
 }
