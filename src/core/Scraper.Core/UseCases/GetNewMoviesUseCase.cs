@@ -71,6 +71,10 @@ namespace Scraper.Core.UseCases
             {
                 return errors.First(e => e is ThrottleException);
             }
+            if (errors.Any(e => e is NotFoundException))
+            {
+                return errors.First(e => e is NotFoundException);
+            }
 
             return await GetNextBatch(batchSize, initialId + batchSize);
         }

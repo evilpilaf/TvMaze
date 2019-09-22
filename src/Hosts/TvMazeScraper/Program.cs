@@ -1,23 +1,28 @@
 ﻿using System;
 using System.Threading.Tasks;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+
 using Scraper.Core.Adapters;
+using Scraper.Core.DomainExceptions;
 using Scraper.Core.UseCases;
 using Scraper.Core.ValueTypes;
+
 using Serilog;
-using Serilog.Core;
+
 using ShowStorage.Adapter;
+
 using TvMazeScraper.Settings;
+
 using TvMazeShowInformation.Adapter;
 
 
 namespace TvMazeScraper
 {
-    class Program
+    public class Program
     {
-        static async Task Main(string[] args)
+        public static async Task Main()
         {
             Console.WriteLine("Hello World!");
 
@@ -35,7 +40,24 @@ namespace TvMazeScraper
 
             ConfigureApplication(configuration, serviceCollection);
 
-            await Execute(serviceCollection);
+            var result = await Execute(serviceCollection);
+            result.Match<Unit, Result<Unit>>(
+                succ: _ => _,
+                fail: ex =>
+                {
+                    switch (ex)
+                    {
+                        case ThrottleException _:
+                            Log.Logger.Warning(ex, "Reached api call limit, try again later.");
+                            break;
+                        case NotFoundException _:
+                            Log.Logger.Warning(ex, "No more shows to index! Now to begin watching them all.");
+                            break;
+                        default:
+                            break;
+                    }
+                    return ex;
+                });
         }
 
         private static async Task<Result<Unit>> Execute(IServiceCollection serviceCollection)
