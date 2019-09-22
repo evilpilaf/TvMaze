@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+
 using NodaTime.Extensions;
+
 using Scraper.Core.Adapters;
 using Scraper.Core.DomainExceptions;
 using Scraper.Core.Entities;
 using Scraper.Core.ValueTypes;
+using Exception = System.Exception;
 
 namespace TvMazeShowInformation.Adapter
 {
@@ -21,7 +24,7 @@ namespace TvMazeShowInformation.Adapter
 
         private HttpClient CreateClient(IHttpClientFactory clientFactory)
         {
-            var client = clientFactory.CreateClient(nameof(TvMazeClient));
+            var client = clientFactory.CreateClient(nameof(ITvMazeClient));
             return client;
         }
 
@@ -58,25 +61,31 @@ namespace TvMazeShowInformation.Adapter
         {
             string uri = $"shows/{showId}/cast";
             var request = new HttpRequestMessage(HttpMethod.Get, uri);
-
-            var response = await _client.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var contentString = await response.Content.ReadAsStringAsync();
-                var json = JArray.Parse(contentString);
+                var response = await _client.SendAsync(request);
 
-                var persons = json.SelectTokens("$..person").Select(p => new CastMember
-                (
-                    id: p["id"].Value<int>(),
-                    name: p["name"].Value<string>(),
-                    birthDate: p["birthday"].Value<DateTime>().ToLocalDateTime().Date
-                ));
-                return new Result<IEnumerable<CastMember>>(persons);
+                if (response.IsSuccessStatusCode)
+                {
+                    var contentString = await response.Content.ReadAsStringAsync();
+                    var json = JArray.Parse(contentString);
+
+                    var persons = json.SelectTokens("$..person").Select(p => new CastMember
+                    (
+                        id: p["id"].Value<int>(),
+                        name: p["name"].Value<string>(),
+                        birthDate: p["birthday"].Value<DateTime>().ToLocalDateTime().Date
+                    ));
+                    return new Result<IEnumerable<CastMember>>(persons);
+                }
+                else
+                {
+                    return HandleUnsuccessfulResponse(response);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return HandleUnsuccessfulResponse(response);
+                return ex;
             }
         }
 
