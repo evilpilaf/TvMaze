@@ -64,12 +64,19 @@ namespace ShowStorage.Adapter
             FeedIterator<int> resultSetIterator = container.GetItemQueryIterator<int>(query,
                 requestOptions: new QueryRequestOptions { MaxItemCount = 1 });
             var results = new List<int>(1);
-            while (resultSetIterator.HasMoreResults)
+            try
             {
-                results.AddRange(await resultSetIterator.ReadNextAsync());
-            }
+                while (resultSetIterator.HasMoreResults)
+                {
+                    results.AddRange(await resultSetIterator.ReadNextAsync());
+                }
 
-            return results.Max();
+                return results.Any() ? results.Max() : 0;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
         }
 
         public async Task<Result<Unit>> StoreMultiple(IReadOnlyList<Show> showsToStore)
@@ -81,7 +88,7 @@ namespace ShowStorage.Adapter
                 {
                     var dto = new ShowCosmosDto(show);
                     ItemResponse<ShowCosmosDto> result = await container.CreateItemAsync(dto);
-                    if (result.StatusCode != HttpStatusCode.OK)
+                    if (result.StatusCode != HttpStatusCode.Created)
                     {
                         _logger.Error(
                             "Unsuccessful storage of show {show}, received response status code {resultStatusCode}",

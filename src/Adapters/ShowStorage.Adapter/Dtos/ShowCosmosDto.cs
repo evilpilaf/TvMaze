@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Newtonsoft.Json;
+
 using NodaTime.Extensions;
 
 using Scraper.Core.Entities;
@@ -10,10 +12,16 @@ namespace ShowStorage.Adapter.Dtos
 {
     internal class ShowCosmosDto
     {
-        public int TvMazeId { get; set; }
+        [JsonProperty(PropertyName = "id")]
         public Guid Id { get; set; }
+        public int TvMazeId { get; set; }
         public string Name { get; set; }
         public IEnumerable<CastCosmosDto> Cast { get; set; }
+
+        public ShowCosmosDto()
+        {
+            
+        }
 
         public ShowCosmosDto(Show entity)
         {
