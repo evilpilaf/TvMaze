@@ -58,7 +58,7 @@ namespace ShowStorage.Adapter
 
         public async Task<Result<int>> GetLatestScrapedShowId()
         {
-            const string query = "SELECT VALUE MAX(c.tvmazeid) FROM c";
+            const string query = "SELECT VALUE MAX(c.TvMazeId) FROM c";
             var container = GetContainer();
 
             FeedIterator<int> resultSetIterator = container.GetItemQueryIterator<int>(query,
