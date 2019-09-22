@@ -2,11 +2,11 @@
 {
     public sealed class Unit
     {
+        public static Unit Default = new Unit();
+
         private Unit()
         {
 
         }
-
-        public static Unit Default => new Unit();
     }
 }

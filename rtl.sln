@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMazeShowInformation.Adapt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scraper.Test.Utils", "test\Scraper.Test.Utils\Scraper.Test.Utils.csproj", "{1EC8725D-E996-454D-B448-114066788C7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowStorage.Adapter", "src\Adapters\ShowStorage.Adapter\ShowStorage.Adapter.csproj", "{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,18 @@ Global
 		{1EC8725D-E996-454D-B448-114066788C7E}.Release|x64.Build.0 = Release|Any CPU
 		{1EC8725D-E996-454D-B448-114066788C7E}.Release|x86.ActiveCfg = Release|Any CPU
 		{1EC8725D-E996-454D-B448-114066788C7E}.Release|x86.Build.0 = Release|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Debug|x64.Build.0 = Debug|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Debug|x86.Build.0 = Debug|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Release|x64.ActiveCfg = Release|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Release|x64.Build.0 = Release|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Release|x86.ActiveCfg = Release|Any CPU
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,6 +140,7 @@ Global
 		{205AA80C-398B-404C-94E0-AF3A99B4980E} = {020E476B-F2AC-4203-A75C-44B6AEEA3EDA}
 		{45AC233C-3C5A-44E2-8850-F46CFA86AF70} = {5392CE96-F600-4647-B43F-EFA2E172BDF6}
 		{1EC8725D-E996-454D-B448-114066788C7E} = {5392CE96-F600-4647-B43F-EFA2E172BDF6}
+		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83} = {020E476B-F2AC-4203-A75C-44B6AEEA3EDA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBE8D153-1020-4B23-A5AC-B66E74D2AFC0}

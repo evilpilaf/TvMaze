@@ -12,12 +12,12 @@ namespace Scraper.Core.UseCases
 {
     public class GetNewMoviesUseCase
     {
-        private readonly IMovieStore _movieStore;
+        private readonly IShowStore _showStore;
         private readonly ITvMazeClient _tvMazeClient;
 
-        public GetNewMoviesUseCase(IMovieStore movieStore, ITvMazeClient tvMazeClient)
+        public GetNewMoviesUseCase(IShowStore showStore, ITvMazeClient tvMazeClient)
         {
-            _movieStore = movieStore;
+            _showStore = showStore;
             _tvMazeClient = tvMazeClient;
         }
 
@@ -25,7 +25,7 @@ namespace Scraper.Core.UseCases
         {
             const int batchSize = 1;
 
-            int latestMovieId = await _movieStore.GetLatestScrapedMovieId();
+            int latestMovieId = await _showStore.GetLatestScrapedShowId();
 
             return await GetNextBatch(batchSize, latestMovieId);
         }
@@ -65,7 +65,7 @@ namespace Scraper.Core.UseCases
                     });
             }
 
-            await _movieStore.StoreMultiple(moviesToStore);
+            await _showStore.StoreMultiple(moviesToStore);
 
             if (errors.Any(e => e is ThrottleException))
             {
