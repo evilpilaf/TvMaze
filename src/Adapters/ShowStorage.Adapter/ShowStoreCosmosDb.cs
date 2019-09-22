@@ -38,7 +38,8 @@ namespace ShowStorage.Adapter
             {
                 _logger.Information("Attempting to retrieve all shows.");
                 FeedIterator<ShowCosmosDto> feedIterator =
-                    container.GetItemQueryIterator<ShowCosmosDto>(queryDefinition);
+                    container.GetItemQueryIterator<ShowCosmosDto>(queryDefinition,
+                        requestOptions: new QueryRequestOptions { MaxItemCount = pageSize });
 
                 var results = new List<ShowCosmosDto>(pageSize);
                 while (feedIterator.HasMoreResults)

@@ -17,15 +17,12 @@ using TvMazeScraper.Settings;
 
 using TvMazeShowInformation.Adapter;
 
-
 namespace TvMazeScraper
 {
     public class Program
     {
         public static async Task Main()
         {
-            Console.WriteLine("Hello World!");
-
             Log.Logger = new LoggerConfiguration()
                                 .WriteTo
                                 .Console()

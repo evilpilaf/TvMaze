@@ -27,11 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMazeShowInformation.Adapt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMazeShowInformation.Adapter.Tests", "test\TvMazeShowInformation.Adapter.Tests\TvMazeShowInformation.Adapter.Tests.csproj", "{45AC233C-3C5A-44E2-8850-F46CFA86AF70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scraper.Test.Utils", "test\Scraper.Test.Utils\Scraper.Test.Utils.csproj", "{1EC8725D-E996-454D-B448-114066788C7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scraper.Test.Utils", "test\Scraper.Test.Utils\Scraper.Test.Utils.csproj", "{1EC8725D-E996-454D-B448-114066788C7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowStorage.Adapter", "src\Adapters\ShowStorage.Adapter\ShowStorage.Adapter.csproj", "{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowStorage.Adapter", "src\Adapters\ShowStorage.Adapter\ShowStorage.Adapter.csproj", "{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMazeScraper", "src\Hosts\TvMazeScraper\TvMazeScraper.csproj", "{C87BDFAE-DF64-4F18-8F10-34E9B456E87A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMazeScraper", "src\Hosts\TvMazeScraper\TvMazeScraper.csproj", "{C87BDFAE-DF64-4F18-8F10-34E9B456E87A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowCastApi", "src\Hosts\ShowCastApi\ShowCastApi.csproj", "{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -127,6 +129,18 @@ Global
 		{C87BDFAE-DF64-4F18-8F10-34E9B456E87A}.Release|x64.Build.0 = Release|Any CPU
 		{C87BDFAE-DF64-4F18-8F10-34E9B456E87A}.Release|x86.ActiveCfg = Release|Any CPU
 		{C87BDFAE-DF64-4F18-8F10-34E9B456E87A}.Release|x86.Build.0 = Release|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Debug|x64.Build.0 = Debug|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Debug|x86.Build.0 = Debug|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Release|x64.ActiveCfg = Release|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Release|x64.Build.0 = Release|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Release|x86.ActiveCfg = Release|Any CPU
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,6 +155,7 @@ Global
 		{1EC8725D-E996-454D-B448-114066788C7E} = {5392CE96-F600-4647-B43F-EFA2E172BDF6}
 		{2F8119FB-5700-4E31-AC16-F4BD5FEF7E83} = {020E476B-F2AC-4203-A75C-44B6AEEA3EDA}
 		{C87BDFAE-DF64-4F18-8F10-34E9B456E87A} = {5C04781F-AEC8-4821-BE41-E26B8DA4D108}
+		{0B68A352-7EEF-402A-90B5-7B9FC732ED6F} = {5C04781F-AEC8-4821-BE41-E26B8DA4D108}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBE8D153-1020-4B23-A5AC-B66E74D2AFC0}
