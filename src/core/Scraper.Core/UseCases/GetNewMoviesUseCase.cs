@@ -69,7 +69,7 @@ namespace Scraper.Core.UseCases
 
             if (errors.Any(e => e is ThrottleException))
             {
-                return errors.Single(e => e is ThrottleException);
+                return errors.First(e => e is ThrottleException);
             }
 
             return await GetNextBatch(batchSize, initialId + batchSize);
